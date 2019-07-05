@@ -20,5 +20,5 @@ jobs:
           paths:
             - "/go/pkg"
       - run:
-          name: Validate service is working
+          name: Build
           command: GOOS=windows GOARCH=amd64 go build
