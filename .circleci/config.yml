@@ -1,0 +1,24 @@
+version: 2 
+jobs: 
+  build: 
+    docker: 
+      - image: circleci/golang:1.12 #
+    working_directory: /go/src/github.com/maa123/NearImageSearch
+
+    steps: 
+      - checkout 
+
+      - restore_cache: 
+          keys:
+            - go-cache
+
+      - run: go get github.com/bamiaux/rez
+      - run: GOOS=windows GOARCH=amd64 go get github.com/lxn/walk
+
+      - save_cache: 
+          key: go-cache
+          paths:
+            - "/go/pkg"
+      - run:
+          name: Validate service is working
+          command: GOOS=windows GOARCH=amd64 go build
