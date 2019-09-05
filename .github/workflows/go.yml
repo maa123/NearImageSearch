@@ -4,7 +4,7 @@ jobs:
 
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest, windows-latest]
     steps:
 
     - name: Set up Go 1.12
@@ -19,10 +19,10 @@ jobs:
     - name: Get dependencies
       run: |
         GOOS=windows GOARCH=amd64 go get -v -t -d ./...
-        if [ -f Gopkg.toml ]; then
-            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-            dep ensure
-        fi
+        #if [ -f Gopkg.toml ]; then
+        #    curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+        #    dep ensure
+        #fi
 
     - name: Build
       run: GOOS=windows GOARCH=amd64 go build -v .
