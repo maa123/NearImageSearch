@@ -10,18 +10,6 @@ import(
 var distanceValue uint8 = 4
 var hdb [][]uint64
 
-func getTextEdit(textLabel *walk.TextEdit) *Widget {
-	return TextEdit{
-		AssignTo: &textLabel,
-		Text:     "\r\n\r\n\r\n\r\n\r\n",
-		MinSize: Size{380, 150},
-		MaxSize: Size{380, 150},
-		ReadOnly: true,
-		VScroll:  true,
-		Row: 8,
-	}
-}
-
 func main() {
 	hdb = LoadDB("hash.db")
 	imgv := new(walk.ImageView)
@@ -69,7 +57,15 @@ func main() {
 				MinSize: Size{380, 300},
 				MaxSize: Size{380, 300},
 			},
-			getTextEdit(&textLabel)
+			TextEdit{
+				AssignTo: &textLabel,
+				Text:     "\r\n\r\n\r\n\r\n\r\n",
+				MinSize: Size{380, 150},
+				MaxSize: Size{380, 150},
+				ReadOnly: true,
+				VScroll:  true,
+				Row: 8,
+			},
 		},
 	}.Run()
 }
