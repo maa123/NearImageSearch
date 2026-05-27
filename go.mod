@@ -1,6 +1,6 @@
 module github.com/maa123/NearImageSearch
 
-go 1.16
+go 1.23
 
 require (
 	github.com/bamiaux/rez v0.0.0-20170731184118-29f4463c688b
